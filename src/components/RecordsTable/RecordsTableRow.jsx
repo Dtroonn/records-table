@@ -38,7 +38,7 @@ export default function RecordsTableRow({ id, name, value }) {
                     label={isEditMode ? 'Введите значение' : null}
                 />
             </TableCell>
-            <TableCell align="right">
+            <TableCell align="right" style={{ minWidth: '422px' }}>
                 <Grid container justify="center" spacing={2}>
                     {!isEditMode && (
                         <>

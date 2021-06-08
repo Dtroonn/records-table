@@ -26,7 +26,7 @@ const useStyles = makeStyles({
     },
 });
 
-export default function RecordsTable() {
+export default function RecordsTable({ items }) {
     const classes = useStyles();
 
     return (
@@ -40,8 +40,9 @@ export default function RecordsTable() {
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    <RecordsTableRow {...{ name: 'color', value: 'green' }} />
-                    <RecordsTableRow {...{ name: 'color', value: 'red' }} />
+                    {items.map((item) => (
+                        <RecordsTableRow key={item.id} {...item} />
+                    ))}
                 </TableBody>
             </Table>
         </TableContainer>
