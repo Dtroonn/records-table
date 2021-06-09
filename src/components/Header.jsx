@@ -3,7 +3,7 @@ import React from 'react';
 
 import CreateRecordDialog from './CreateRecordDialog';
 
-export default function Header() {
+export default React.memo(function Header({ onCreateRecordClick }) {
     const [isOpenDialog, setIsOpenDialog] = React.useState(false);
 
     const handleCloseDialogClick = () => {
@@ -27,7 +27,11 @@ export default function Header() {
                     </Button>
                 </Grid>
             </Grid>
-            <CreateRecordDialog open={isOpenDialog} onCloseClick={handleCloseDialogClick} />
+            <CreateRecordDialog
+                open={isOpenDialog}
+                onCloseClick={handleCloseDialogClick}
+                onSubmitClick={onCreateRecordClick}
+            />
         </Box>
     );
-}
+});

@@ -26,7 +26,7 @@ const useStyles = makeStyles({
     },
 });
 
-export default function RecordsTable({ items }) {
+export default function RecordsTable({ items, onDeleteItemButtonClick, onSubmitItemButtonClick }) {
     const classes = useStyles();
 
     return (
@@ -41,7 +41,12 @@ export default function RecordsTable({ items }) {
                 </TableHead>
                 <TableBody>
                     {items.map((item) => (
-                        <RecordsTableRow key={item.id} {...item} />
+                        <RecordsTableRow
+                            key={item.id}
+                            {...item}
+                            onDeleteButtonClick={onDeleteItemButtonClick}
+                            onSubmitButtonClick={onSubmitItemButtonClick}
+                        />
                     ))}
                 </TableBody>
             </Table>

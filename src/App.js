@@ -1,21 +1,16 @@
-import { Container, LinearProgress } from '@material-ui/core';
+import { LinearProgress } from '@material-ui/core';
 import React from 'react';
-import { shallowEqual, useDispatch, useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
-import Header from './components/Header';
-import RecordsTable from './components/RecordsTable/index';
+import Popups from './components/Popups';
+import HomePage from './pages/Home';
 
 import { fetchRecords } from './reduxToolkit/thunks/records';
 
 function App() {
     const dispatch = useDispatch();
-    const { records, isLoaded } = useSelector(
-        ({ records }) => ({
-            records: records.items,
-            isLoaded: records.isLoaded,
-        }),
-        shallowEqual,
-    );
+
+    const isLoaded = useSelector(({ records }) => records.isLoaded);
 
     React.useEffect(() => {
         dispatch(fetchRecords());
@@ -28,11 +23,9 @@ function App() {
     return (
         <div className="App">
             <main>
-                <Container max-width="md">
-                    <Header />
-                    <RecordsTable items={records} />
-                </Container>
+                <HomePage />
             </main>
+            <Popups />
         </div>
     );
 }
